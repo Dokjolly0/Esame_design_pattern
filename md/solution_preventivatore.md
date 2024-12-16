@@ -27,9 +27,7 @@ Per questo problema, il pattern Composite è la scelta ideale perché:
 - `ElementoBase`: Rappresenta gli elementi foglia (prodotti, servizi)
 - `Sezione`: Rappresenta i nodi compositi (sezioni e sottosezioni)
 
-## 💻 Implementazione Dettagliata
-
-### 🔧 ComponentePreventivo (Componente Base)
+## 💻 Implementazione Semplificata
 
 ```python
 class ComponentePreventivo(ABC):
@@ -37,101 +35,30 @@ class ComponentePreventivo(ABC):
         self.nome = nome
         self.sconto = sconto
 
-    @abstractmethod
-    def get_prezzo_base(self) -> float:
-        pass
-
-    @abstractmethod
-    def get_prezzo_scontato(self) -> float:
-        pass
-
-    def applica_sconto(self, prezzo: float) -> float:
-        return prezzo * (1 - self.sconto)
-```
-
-Questa è la classe base astratta che definisce l'interfaccia comune per tutti i componenti del preventivo. Include:
-
-- Metodi astratti per calcolare i prezzi base e scontati
-- Metodo di utilità per applicare lo sconto
-
-### 🍃 ElementoBase (Leaf)
-
-```python
 class ElementoBase(ComponentePreventivo):
     def __init__(self, nome: str, prezzo: float, sconto: float = 0):
         super().__init__(nome, sconto)
         self.prezzo = prezzo
 
-    def get_prezzo_base(self) -> float:
-        return self.prezzo
-
-    def get_prezzo_scontato(self) -> float:
-        return self.applica_sconto(self.prezzo)
-```
-
-Questa classe rappresenta gli elementi foglia del composite:
-
-- Implementa i metodi concreti per il calcolo dei prezzi
-- Gestisce il prezzo base dell'elemento
-- Applica lo sconto individuale
-
-### 📦 Sezione (Composite)
-
-```python
 class Sezione(ComponentePreventivo):
     def __init__(self, nome: str, sconto: float = 0):
         super().__init__(nome, sconto)
-        self.componenti: List[ComponentePreventivo] = []
-
-    def aggiungi_componente(self, componente: ComponentePreventivo):
-        self.componenti.append(componente)
-
-    def get_prezzo_base(self) -> float:
-        return sum(comp.get_prezzo_base() for comp in self.componenti)
-
-    def get_prezzo_scontato(self) -> float:
-        somma_scontata = sum(comp.get_prezzo_scontato() for comp in self.componenti)
-        return self.applica_sconto(somma_scontata)
+        self.componenti = []
 ```
-
-Questa classe gestisce la struttura composita:
-
-- Mantiene una lista di componenti (che possono essere sia ElementoBase che altre Sezioni)
-- Implementa la logica ricorsiva per il calcolo dei prezzi
-- Applica lo sconto dopo aver calcolato la somma dei prezzi scontati dei componenti
 
 ## 🚀 Esempio di Utilizzo
 
 ```python
-def main():
-    # Creazione della struttura del preventivo
-    preventivo = Sezione("Preventivo Completo")
-
-    # Sezione macchina base e accessori
-    sez_macchina = Sezione("Macchina base e accessori", 0.05)
-
-    # Configurazione base
-    conf_base = Sezione("Configurazione base")
-    conf_base.aggiungi_componente(ElementoBase("Macchina", 20000))
-    conf_base.aggiungi_componente(ElementoBase("Accessorio1", 500))
-
-    # Accessori extra con sconto del 10%
-    acc_extra = Sezione("Accessori extra", 0.1)
-    acc_extra.aggiungi_componente(ElementoBase("Accessorio4", 800))
-
-    sez_macchina.aggiungi_componente(conf_base)
-    sez_macchina.aggiungi_componente(acc_extra)
-
-    # Calcolo e visualizzazione dei prezzi
-    print(f"Prezzo base totale: €{preventivo.get_prezzo_base():.2f}")
-    print(f"Prezzo scontato totale: €{preventivo.get_prezzo_scontato():.2f}")
+preventivo = Sezione("Preventivo Completo")
+sez_macchina = Sezione("Macchina base", 0.05)
+sez_macchina.aggiungi_componente(ElementoBase("Macchina", 20000))
 ```
 
 ## 📊 Output di Esempio
 
 ```
-Prezzo base totale: €24800.00
-Prezzo scontato totale: €23247.40
+Prezzo base totale: €20000.00
+Prezzo scontato totale: €19000.00
 ```
 
 ## 📝 Note Implementative

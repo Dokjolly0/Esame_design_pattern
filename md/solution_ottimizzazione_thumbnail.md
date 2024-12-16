@@ -72,42 +72,17 @@ Il Pattern Proxy è la scelta ideale per questo scenario per diversi motivi:
    - Facile aggiungere nuove funzionalità
    - Semplice modifica dei comportamenti esistenti
 
-## 🚀 Come Utilizzare il pattern
+## 🚀 Esempio di Utilizzo
 
 ```python
-# Inizializzazione
+# Esempio base di utilizzo
 real_service = RealImageService(storage_path)
 cache_proxy = CacheImageProxy(real_service)
 thumbnail_proxy = ThumbnailProxy(cache_proxy)
 
-# Utilizzo
-image_id = "user_123_profile.jpg"
-thumbnail = thumbnail_proxy.get_image(image_id)
+# Richiesta immagine
+image = thumbnail_proxy.get_image("user_123_profile.jpg")
 ```
-
-## 📊 Flusso di Esecuzione
-
-1. Il client richiede un'immagine
-2. ThumbnailProxy verifica se esiste una thumbnail
-3. Se non esiste, richiede l'immagine originale tramite CacheProxy
-4. CacheProxy verifica la cache
-5. Se non in cache, recupera da RealImageService
-6. L'immagine viene processata e restituita al client
-
-## 🔍 Test e Verifica
-
-Per testare il sistema:
-
-```python
-python main.py
-```
-
-Il test verifica:
-
-- ✅ Creazione iniziale thumbnail
-- ✅ Funzionamento della cache
-- ✅ Gestione multiple richieste
-- ✅ Corretto ridimensionamento
 
 ## 📈 Conclusioni
 
