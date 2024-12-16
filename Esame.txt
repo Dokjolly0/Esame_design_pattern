@@ -1,0 +1,22 @@
+Aspirapolvere e accessori
+Tra quelli visti, i pattern possibili per le soluzioni sono:
+
+Factory Method
+Abstract Factory
+Singleton
+Adapter
+Composite
+Decorator
+Facade
+Proxy
+Strategy
+Template Method
+Immaginate di dover gestire un software di assistenza dove l'utente può trovare informazioni e comprare ricambi per aspirapolvere.
+Tutti i modelli di aspirapolvere hanno a disposizione 3 accessori, ma ognuno ha la sua versione dell'accessorio:
+
+spazzola
+filtro
+sacchetti
+La pagina del software deve mostrare i dettagli dell'aspirapolvere, la lista dei suoi accessori con i dettagli, ecc. Le informazioni sono sempre nello stesso formato.
+
+Descrivere che pattern usereste per assicurarvi di mostrare sempre solo le informazioni relative al prodotto. Includendo una breve descrizione del ragionamento e una eventuale rappresentazione del risultato finale.

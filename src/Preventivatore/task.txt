@@ -1,0 +1,25 @@
+Dovete costruire un preventivatore. Questo preventivatore è diviso in diverse sezioni, ogni sezione può contenere settosezioni e/o elementi base (accessori, servizi, ecc):
+
+macchina base e accessori (sezione)
+configurazione base (sottosezione)
+macchina (elemento)
+accessorio1 (elemento)
+accessorio2
+accessorio3
+accessori extra (sottosezione)
+accessorio4
+accessorio5
+servizi aggiuntivi: (sezione)
+garanzie aggiuntive (sottosezione)
+garanzia estesa (elemento)
+riparazione internazionale (elemento)
+assistenza telefono h24 (elemento)
+trasporto (sezione)
+corriere1 (elemento)
+imballaggio2 (elemento)
+Ogni sezione/sottosezione/elemento può avere una quantità e uno sconto. Gli elementi base derivano da un listino e hanno un prezzo base di partenza.
+Il software deve mostrare per ogni sezione/sottosezione il suo prezzo base e il prezzo applicato lo sconto.
+Il prezzo base di una sezione/sottosezione è dato dalla somma dei prezzi base dei suoi elementi o sottosezioni. Il prezzo scontato è calcolato usando come base la somma dei prezzi scontati delle sue sottosezioni e elementi, sulla quale poi viene applicato lo sconto della sezione.
+Il software mostra poi un costo totale con e senza sconti applicati
+
+Scegliere e descrivere un pattern che vi permetta di gestire i calcoli in modo semplice e scalabile, in modo da poter aggiungere e modificare le sezioni in futuro senza dover cambiare la logica di calcolo.

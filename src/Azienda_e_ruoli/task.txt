@@ -1,0 +1,9 @@
+Una azienda è composta da Empoyee, ognuno dei quali vede le sue attività da fare su un portale web.
+Un Engineer è un tipo di Employee che riceverà dei task di sviluppo.
+Un AdministrativeManager è un Engineer che fa da capoufficio, amministra e alloca le risorse.
+Un ProjectManager è un Engineer che fa da capoprogetto, verifica i progressi di un determinato progetto, assegna compiti e priorità.
+In alcuni casi un Engineer può essere sia capoufficio che capoprogetto.
+
+Nel software che fornisce le attività da fare per ognuna di queste figure vengono tornate le attività da svolgere durante la giornata.
+
+Descrivere il design pattern utilizzato per gestire questo tipo di struttura (nome e scopo generale) e la soluzione, includendo una breve descrizione del ragionamento e una eventuale rappresentazione del risultato finale.

@@ -1,0 +1,15 @@
+State sviluppando una libreria che consenta all'utente di definire la struttura di dei dati e salvarli in un database a scelta. E' possibile scegliere tra diversi database che già avete predisposto, inoltre un utente può anche decidere implementare la logica per usarne uno non ancora compatibile.
+La libreria permette di configurare il database scelto, e per lo scopo di questo esercizio mette a disposizione solo due metodi:
+
+find(params) permette di eseguire una query sul database usando dei parametri di ricerca
+create(data) permette di salvare un nuovo dato
+params e data sono nello stesso formato indipendentemente dal tipo di database scelto.
+
+I requisiti della libreria sono:
+
+esporre una interfaccia unica a prescindere dal tipo di database
+poter passare da un tipo di database ad un altro cambiando solo la configurazione iniziale
+dare la possibilità di integrare altri database in futuro, a prescindere che sia l'autore della libreria o l'utilizzatore a sviluppare l'integrazione
+Possiamo immaginare quindi due parti di codice: una libreria base e più integrazioni, una per ogni tipo di database.
+
+Descrivere quale o quali design pattern facilitano la creazione di questa libreria, spiegando brevemente le operazioni chiave del flusso di query e create e se sono di competenza della libreria base o dell'integrazione.

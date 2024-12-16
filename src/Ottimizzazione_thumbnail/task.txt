@@ -1,0 +1,21 @@
+Ottimizzazione Thumbnail
+Immaginate di avere un sito visitato da tanti utenti e ogni utente ha la sua immagine profilo.
+Le immagini sono salvate nel loro formato originale in uno spazio di archiviazione in cloud (amazon S3 ad esempio) e vengono tornate quando richieste dall'utente.
+Il vostro sito però è cresciuto molto e tornare queste immagini ogni volta comincia a costarvi una fortuna. Soprattutto perché le trasferite con la loro risoluzione originale ogni volta.
+Decidete quindi di fare due ottimizzazioni:
+
+salvate una versione ottimizzata (thumbnail) a risoluzione ridotta dell'immagine
+l'immagine richiesta viene salvata in una cache, se per 20 minuti nessuno la richiede più viene rimossa dalla cache.
+Per i nuovi utenti la thumbnail viene salvata già al momento dell'upload, per tutti quelli già registrati prima della modifica viene generata e salvata appena arriva una richiesta dell'immagine profilo.
+Quindi ipoteticamente a un certo punto tutte le immagini profilo avranno una thumbnail e non sarà più necessario fare la conversione in tempo reale.
+Abbiamo quindi i seguenti casi:
+
+thumbnail_exercize.excalidraw.png
+
+Descrivere che design pattern usereste per risolvere la situazione descritta sopra, e la soluzione ottenuta.
+Indizi:
+
+attualmente avete già il servizio che prende e torna un'immagine dallo store (parte più a destra del diagramma)
+a un certo punto la conversione della thumbnail (parte centrale del diagramma) potrebbe non servire più. Da tenere separata come logica?
+potrebbe essere necessario usare lo stesso pattern più di una volta
+non è un decorator
