@@ -1,10 +1,12 @@
-# 🎭 Pattern Aziendale - Decorator Pattern
+# 🎭 Azienda e Ruoli
+
+## 🎯 Pattern Scelto: Decorator
 
 ## 📝 Descrizione
 
 Il Decorator Pattern è la scelta migliore per questo scenario aziendale perché permette di aggiungere dinamicamente nuove responsabilità agli oggetti. Nel nostro caso, un ingegnere può assumere ruoli aggiuntivi (Project Manager e/o Administrative Manager) mantenendo le sue responsabilità base.
 
-### Perché il Decorator Pattern?
+### 🧠 Ragionamento
 
 - Permette di aggiungere responsabilità in modo dinamico
 - Mantiene il principio Single Responsibility
@@ -15,16 +17,16 @@ Il Decorator Pattern è la scelta migliore per questo scenario aziendale perché
 
 ### Vantaggi
 
-- 🟢 Maggiore flessibilità rispetto all'ereditarietà
-- 🟢 Aggiunta/rimozione di responsabilità a runtime
-- 🟢 Rispetta il principio Open/Closed
-- 🟢 Evita classi sovraccariche di funzionalità
+- ✅ Maggiore flessibilità rispetto all'ereditarietà
+- ✅ Aggiunta/rimozione di responsabilità a runtime
+- ✅ Rispetta il principio Open/Closed
+- ✅ Evita classi sovraccariche di funzionalità
 
 ### Svantaggi
 
-- 🔴 Può risultare in molti oggetti piccoli e simili
-- 🔴 L'ordine di decorazione può essere importante
-- 🔴 Può essere più complesso da debuggare
+- ❌ Può risultare in molti oggetti piccoli e simili
+- ❌ L'ordine di decorazione può essere importante
+- ❌ Può essere più complesso da debuggare
 
 ## 💻 Implementazione
 

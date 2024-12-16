@@ -1,6 +1,8 @@
-# 📝 Database Pattern Implementation
+# 📝 TYpeORM
 
-## 🎯 Analisi del Problema
+## 🎯 Pattern Scelto: Unione di Strategy + Factory Method
+
+## 🧾 Analisi del Problema
 
 Il problema richiede la creazione di una libreria per interagire con diversi database mantenendo un'interfaccia uniforme. Le caratteristiche chiave sono:
 
@@ -8,12 +10,15 @@ Il problema richiede la creazione di una libreria per interagire con diversi dat
 - Interfaccia unificata
 - Estensibilità per nuovi database
 
-## 🎨 Pattern Scelti: Strategy + Factory Method
+## 🎯 Pattern Scelti: Strategy + Factory Method
+
+### 🧠 Ragionamento
 
 Ho scelto la combinazione di Strategy e Factory Method perché:
 
 1. Strategy: Permette di definire una famiglia di algoritmi intercambiabili
 2. Factory Method: Gestisce la creazione degli oggetti database in modo flessibile
+3. Permettono di selezionare dinamicamente il database da utilizzare e di creare gli oggetti database in modo flessibile in caso di cambio struttura del progetto.
 
 ### Vantaggi ✅
 
@@ -24,9 +29,7 @@ Ho scelto la combinazione di Strategy e Factory Method perché:
 
 ### Svantaggi ❌
 
-- Maggiore complessità iniziale
-- Più classi da gestire
-- Overhead di performance minimo
+- Maggiore complessità iniziale avendo più classi da gestire
 
 ## 💻 Implementazione
 

@@ -1,0 +1,20 @@
+E' passato un anno da quando avete sviluppato il preventivatore sopra.
+Vi viene chiesto di andare ad aggiornare un unico file excel su Google Drive ogni volta che un ordine viene aggiunto, modificato o eliminato. Ad ogni ordine corrisponde una riga.
+La libreria che vi permette di scrivere su Drive lavora a basso livello, per ogni dato che dovete andare a scrivere vi serve il link del file (sempre lo stesso), il nome del foglio (sempre lo stesso), le coordinate su cui lavorare, e infine i dati da scrivere.
+Ogni ordine ha il suo codice univoco, e deve rimanere all'oscuro del fatto che lo state esportando su Drive.
+Possiamo riassumere i passaggi delle 3 operazioni da svolgere:
+
+Aggiunta ordine
+trovare le coordinate della prima riga vuota del foglio
+trasformare i dati dell'ordine in una rappresentazione a tabella
+scrivere i dati nella riga
+Modifica ordine
+trovare le coordinate della riga che nella prima cella ha il codice dell'ordine modificato
+trasformare i dati dell'ordine in una rappresentazione a tabella
+scrivere i dati nella riga
+Eliminazione ordine
+- trovare le coordinate della riga che nella prima cella ha il codice dell'ordine modificato
+- eliminare la riga
+Inoltre per ognuna di queste operazioni bisogna autenticarsi, richiedere l'accesso al file, gestire gli errori, ecc.
+Bisogna tenere presente che ci sono diverse parti del software dove possono essere lanciate queste operazioni.
+Quale design pattern vi viene in aiuto per implementare quanto descritto?

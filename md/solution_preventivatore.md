@@ -1,11 +1,21 @@
-# 🏭 Pattern Composite per il Preventivatore
+# 🏭 Preventivatore
 
-## 📝 Descrizione della Soluzione
+## 🎯 Pattern Scelto: Composite
+
+## 📝 Descrizione del Problema
+
+Dovete costruire un preventivatore. Questo preventivatore è diviso in diverse sezioni, ogni sezione può contenere settosezioni e/o elementi base (accessori, servizi, ecc)
+Ogni sezione/sottosezione/elemento può avere una quantità e uno sconto. Gli elementi base derivano da un listino e hanno un prezzo base di partenza.
+Il software deve mostrare per ogni sezione/sottosezione il suo prezzo base e il prezzo applicato lo sconto.
+Il prezzo base di una sezione/sottosezione è dato dalla somma dei prezzi base dei suoi elementi o sottosezioni. Il prezzo scontato è calcolato usando come base la somma dei prezzi scontati delle sue sottosezioni e elementi, sulla quale poi viene applicato lo sconto della sezione.
+Il software mostra poi un costo totale con e senza sconti applicati
+
+## 🧠 Ragionamento
 
 Per questo problema, il pattern Composite è la scelta ideale perché:
 
 - Abbiamo una struttura ad albero con sezioni, sottosezioni ed elementi base
-- Vogliamo trattare sia gli elementi singoli che i gruppi di elementi in modo uniforme
+- Trattare sia gli elementi singoli che i gruppi di elementi in modo uniforme
 - Il calcolo dei prezzi segue una logica ricorsiva dove il prezzo di una sezione dipende dai suoi componenti
 
 ## ✅ Vantaggi
@@ -17,7 +27,6 @@ Per questo problema, il pattern Composite è la scelta ideale perché:
 
 ## ❌ Svantaggi
 
-- Può rendere il design troppo generico
 - Può essere difficile limitare i tipi di componenti che possono essere aggiunti
 - Richiede una buona comprensione della ricorsione per l'implementazione
 

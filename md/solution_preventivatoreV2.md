@@ -1,53 +1,61 @@
-# 📋 Preventivatore v2 - Documentation
+# 📋 Preventivatore v2
 
-## 🎯 Pattern Scelto: Strategy
+## 🎯 Pattern Scelto: Facade
 
-Il pattern Strategy è stato scelto per le seguenti ragioni:
+## 🧾 Analisi del Problema
 
-- Permette di definire una famiglia di algoritmi di calcolo preventivi
-- Rende gli algoritmi intercambiabili
-- Isola la logica di calcolo dal resto dell'applicazione
-- Facilita l'aggiunta di nuove strategie di calcolo
+Vi viene chiesto di andare ad aggiornare un unico file excel su Google Drive ogni volta che un ordine viene aggiunto, modificato o eliminato. Ad ogni ordine corrisponde una riga.
+La libreria che vi permette di scrivere su Drive lavora a basso livello, per ogni dato che dovete andare a scrivere vi serve il link del file (sempre lo stesso), il nome del foglio (sempre lo stesso), le coordinate su cui lavorare, e infine i dati da scrivere.
+Ogni ordine ha il suo codice univoco, e deve rimanere all'oscuro del fatto che lo state esportando su Drive.
+Possiamo riassumere i passaggi delle 3 operazioni da svolgere:
+
+- Aggiunta ordine
+- Modifica ordine
+- eliminare la riga
+
+### 🧠 Ragionamento
+
+Ho scelto il Facade pattern per questi motivi:
+
+- Use the Facade pattern when you need to have a limited but straightforward interface to a complex subsystem. ➡️ Questo è il caso d'uso tipico del Facade pattern e il problema che vogliamo risolvere rispecchia questa descrizione.
+- Fornisce un'interfaccia semplificata per il sistema complesso di calcolo preventivi
+- Nasconde la complessità del sistema sottostante
+- Riduce le dipendenze tra il client e i sottosistemi
+- Facilita l'utilizzo del sistema di preventivazione
 
 ### ✅ Vantaggi
 
-- Flessibilità nel cambiare l'algoritmo di calcolo a runtime
-- Separazione delle responsabilità
-- Facile aggiunta di nuove strategie
-- Eliminazione di condizioni multiple switch/if
+- Semplifica l'interfaccia per il client
+- Disaccoppia il sottosistema dai client
+- Fornisce un punto di accesso unificato
+- Migliora la manutenibilità del codice
 
 ### ❌ Svantaggi
 
-- Aumenta il numero di oggetti nel sistema
-- Il client deve conoscere le differenze tra le strategie
-- Overhead di comunicazione tra Strategy e Context
+- Può introdurre un livello di indirezione non necessario se non gestito correttamente
 
 ## 💻 Implementazione
 
 ```python
-from abc import ABC, abstractmethod
+# Sottosistemi
+class CalcolatoreIVA:
+    def calcola_iva(self, importo: float) -> float:
+        return importo * 0.22
 
-# Strategy Interface
-class StrategiaPreventivo(ABC):
-    @abstractmethod
+class CalcolatoreBase:
+    def calcola_base(self, dati: dict) -> float:
+        return dati.get('importo_base', 0)
+
+# Facade
+class PreventivatoreFacade:
+    def __init__(self):
+        self._calcolatore_iva = CalcolatoreIVA()
+        self._calcolatore_base = CalcolatoreBase()
+
     def calcola_preventivo(self, dati: dict) -> float:
-        pass
-
-# Esempio di Concrete Strategy
-class PreventivoBase(StrategiaPreventivo):
-    def calcola_preventivo(self, dati: dict) -> float:
-        return dati.get('importo_base', 0) * 1.22  # IVA 22%
-
-# Context
-class Preventivatore:
-    def __init__(self, strategia: StrategiaPreventivo):
-        self._strategia = strategia
+        importo_base = self._calcolatore_base.calcola_base(dati)
+        iva = self._calcolatore_iva.calcola_iva(importo_base)
+        return importo_base + iva
 ```
 
-## 🖥️ Output
-
-```
-Preventivo Base: 1220.0
-```
-
-Il codice implementa un sistema flessibile per il calcolo dei preventivi con diverse strategie. L'esempio mostra solo la strategia base che calcola il prezzo con IVA, ma il sistema è progettato per supportare facilmente l'aggiunta di nuove strategie di calcolo.
+Il codice implementa un sistema di preventivazione che utilizza il pattern Facade per nascondere la complessità del calcolo dei preventivi. La facade fornisce un'interfaccia semplice per il client, mentre gestisce internamente l'interazione con i vari sottosistemi di calcolo.

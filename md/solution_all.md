@@ -2,7 +2,7 @@
 
 ## 📝 Descrizione
 
-Questo progetto implementa un sistema per gestire gli accessori specifici per diversi modelli di aspirapolvere utilizzando il design pattern Abstract Factory. Ogni modello di aspirapolvere è dotato di tre accessori dedicati: spazzola, filtro e sacchetto.
+Questo progetto implementa un sistema per gestire gli accessori specifici per diversi modelli di aspirapolvere utilizzando l' Abstract Factory. Ogni modello di aspirapolvere è dotato di tre accessori dedicati, ovverospazzola, filtro e sacchetto.
 
 ## 🏗️ Struttura del Progetto
 
@@ -23,7 +23,7 @@ aspirapolvere_project/
 └── main.py                   # Punto di ingresso dell'applicazione
 ```
 
-## ⚙️ Requisiti di Sistema
+## ⚙��� Requisiti di Sistema
 
 - Python 3.7 o versioni successive
 - Ambiente di sviluppo con pip configurato
@@ -64,7 +64,57 @@ Il progetto è strutturato per essere facilmente estendibile con nuovi modelli d
 
 _Sviluppato come esempio di implementazione del pattern Abstract Factory_
 
-# 🖼️ Ottimizzazione Thumbnail con Proxy
+## 🧠 Ragionamento sulla Scelta del Pattern
+
+### Perché Abstract Factory?
+
+L'Abstract Factory è stato scelto come pattern ottimale per questo scenario per i seguenti motivi:
+
+1. **Famiglie di Prodotti Correlati**:
+
+   - Ogni modello di aspirapolvere richiede una famiglia specifica di accessori (spazzola, filtro, sacchetto)
+   - Gli accessori devono essere compatibili tra loro all'interno dello stesso modello
+
+2. **Incapsulamento della Creazione**:
+
+   - Nasconde i dettagli di implementazione delle classi concrete
+   - Centralizza la logica di creazione degli accessori per modello
+
+3. **Garanzia di Compatibilità**:
+   - Assicura che vengano creati solo accessori compatibili per ciascun modello
+   - Previene errori di abbinamento tra accessori e modelli
+
+### Vantaggi
+
+1. **Manutenibilità**:
+
+   - Facile aggiungere nuovi modelli di aspirapolvere
+   - Modifiche localizzate nelle factory concrete
+
+2. **Estensibilità**:
+
+   - Semplice introduzione di nuovi tipi di accessori
+   - Supporto per nuovi modelli senza modificare il codice esistente
+
+3. **Coerenza**:
+   - Garantisce la creazione di set completi di accessori compatibili
+   - Riduce gli errori di configurazione
+
+### Svantaggi
+
+1. **Complessità**:
+
+   - Richiede la creazione di molte interfacce e classi
+   - Può risultare eccessivo per sistemi semplici
+
+2. **Rigidità della Struttura**:
+
+   - L'aggiunta di nuovi tipi di accessori richiede modifiche all'interfaccia della factory
+   - Tutte le factory concrete devono implementare i nuovi metodi
+
+# 🖼️ Ottimizzazione Thumbnail
+
+## 🎯 Pattern Scelto: Proxy
 
 ## 📝 Descrizione del Problema
 
@@ -77,7 +127,7 @@ Il sistema deve gestire le immagini profilo degli utenti con le seguenti necessi
 
 ## 🔧 Pattern utilizzato: Proxy
 
-### 🎯 Perché il Pattern Proxy?
+### 🧠 Ragionamento
 
 Il Pattern Proxy è la scelta ideale per questo scenario per diversi motivi:
 
@@ -99,29 +149,7 @@ Il Pattern Proxy è la scelta ideale per questo scenario per diversi motivi:
 - Riduce il numero di accessi allo storage
 - Migliora le performance del sistema
 
-### Componenti Principali:
-
-1. 🎨 **IImageService** (Interface)
-
-   - Definisce il contratto base per tutti i servizi
-
-2. 💾 **RealImageService**
-
-   - Gestisce l'accesso diretto allo storage
-   - Recupera le immagini originali
-
-3. 📦 **CacheImageProxy**
-
-   - Implementa la cache temporanea
-   - Gestisce la scadenza delle immagini
-   - Pulisce automaticamente la cache
-
-4. 🖼️ **ThumbnailProxy**
-   - Gestisce la creazione delle thumbnail
-   - Memorizza le versioni ridotte
-   - Ottimizza il trasferimento
-
-## 💡 Vantaggi della Soluzione
+## ✅ Vantaggi
 
 1. **Separazione delle Responsabilità**
 
@@ -137,6 +165,10 @@ Il Pattern Proxy è la scelta ideale per questo scenario per diversi motivi:
 3. **Flessibilità**
    - Facile aggiungere nuove funzionalità
    - Semplice modifica dei comportamenti esistenti
+
+## ❌ Svantaggi
+
+- Maggiore complessità iniziale
 
 ## 🚀 Esempio di Utilizzo
 
@@ -159,14 +191,24 @@ Il Pattern Proxy fornisce una soluzione elegante e efficiente per:
 - Mantenere il codice organizzato
 - Gestire in modo trasparente la complessità
 
-# 🏭 Pattern Composite per il Preventivatore
+# 🏭 Preventivatore
 
-## 📝 Descrizione della Soluzione
+## 🎯 Pattern Scelto: Composite
+
+## 📝 Descrizione del Problema
+
+Dovete costruire un preventivatore. Questo preventivatore è diviso in diverse sezioni, ogni sezione può contenere settosezioni e/o elementi base (accessori, servizi, ecc)
+Ogni sezione/sottosezione/elemento può avere una quantità e uno sconto. Gli elementi base derivano da un listino e hanno un prezzo base di partenza.
+Il software deve mostrare per ogni sezione/sottosezione il suo prezzo base e il prezzo applicato lo sconto.
+Il prezzo base di una sezione/sottosezione è dato dalla somma dei prezzi base dei suoi elementi o sottosezioni. Il prezzo scontato è calcolato usando come base la somma dei prezzi scontati delle sue sottosezioni e elementi, sulla quale poi viene applicato lo sconto della sezione.
+Il software mostra poi un costo totale con e senza sconti applicati
+
+## 🧠 Ragionamento
 
 Per questo problema, il pattern Composite è la scelta ideale perché:
 
 - Abbiamo una struttura ad albero con sezioni, sottosezioni ed elementi base
-- Vogliamo trattare sia gli elementi singoli che i gruppi di elementi in modo uniforme
+- Trattare sia gli elementi singoli che i gruppi di elementi in modo uniforme
 - Il calcolo dei prezzi segue una logica ricorsiva dove il prezzo di una sezione dipende dai suoi componenti
 
 ## ✅ Vantaggi
@@ -178,7 +220,6 @@ Per questo problema, il pattern Composite è la scelta ideale perché:
 
 ## ❌ Svantaggi
 
-- Può rendere il design troppo generico
 - Può essere difficile limitare i tipi di componenti che possono essere aggiunti
 - Richiede una buona comprensione della ricorsione per l'implementazione
 
@@ -229,13 +270,15 @@ Prezzo scontato totale: €19000.00
 - Il calcolo dei prezzi è completamente trasparente per il client
 - La manutenibilità è elevata grazie alla separazione delle responsabilità
 
-# 🎭 Pattern Aziendale - Decorator Pattern
+# 🎭 Azienda e Ruoli
+
+## 🎯 Pattern Scelto: Decorator
 
 ## 📝 Descrizione
 
 Il Decorator Pattern è la scelta migliore per questo scenario aziendale perché permette di aggiungere dinamicamente nuove responsabilità agli oggetti. Nel nostro caso, un ingegnere può assumere ruoli aggiuntivi (Project Manager e/o Administrative Manager) mantenendo le sue responsabilità base.
 
-### Perché il Decorator Pattern?
+### 🧠 Ragionamento
 
 - Permette di aggiungere responsabilità in modo dinamico
 - Mantiene il principio Single Responsibility
@@ -246,16 +289,16 @@ Il Decorator Pattern è la scelta migliore per questo scenario aziendale perché
 
 ### Vantaggi
 
-- 🟢 Maggiore flessibilità rispetto all'ereditarietà
-- 🟢 Aggiunta/rimozione di responsabilità a runtime
-- 🟢 Rispetta il principio Open/Closed
-- 🟢 Evita classi sovraccariche di funzionalità
+- ✅ Maggiore flessibilità rispetto all'ereditarietà
+- ✅ Aggiunta/rimozione di responsabilità a runtime
+- ✅ Rispetta il principio Open/Closed
+- ✅ Evita classi sovraccariche di funzionalità
 
 ### Svantaggi
 
-- 🔴 Può risultare in molti oggetti piccoli e simili
-- 🔴 L'ordine di decorazione può essere importante
-- 🔴 Può essere più complesso da debuggare
+- ❌ Può risultare in molti oggetti piccoli e simili
+- ❌ L'ordine di decorazione può essere importante
+- ❌ Può essere più complesso da debuggare
 
 ## 💻 Implementazione
 
@@ -292,9 +335,11 @@ Il Decorator Pattern è stato scelto perché:
 3. Evita la necessità di creare sottoclassi per ogni combinazione di ruoli
 4. Supporta la composizione di ruoli in modo trasparente e modulare
 
-# 📝 Database Pattern Implementation
+# 📝 TYpeORM
 
-## 🎯 Analisi del Problema
+## 🎯 Pattern Scelto: Unione di Strategy + Factory Method
+
+## 🧾 Analisi del Problema
 
 Il problema richiede la creazione di una libreria per interagire con diversi database mantenendo un'interfaccia uniforme. Le caratteristiche chiave sono:
 
@@ -302,12 +347,15 @@ Il problema richiede la creazione di una libreria per interagire con diversi dat
 - Interfaccia unificata
 - Estensibilità per nuovi database
 
-## 🎨 Pattern Scelti: Strategy + Factory Method
+## 🎯 Pattern Scelti: Strategy + Factory Method
+
+### 🧠 Ragionamento
 
 Ho scelto la combinazione di Strategy e Factory Method perché:
 
 1. Strategy: Permette di definire una famiglia di algoritmi intercambiabili
 2. Factory Method: Gestisce la creazione degli oggetti database in modo flessibile
+3. Permettono di selezionare dinamicamente il database da utilizzare e di creare gli oggetti database in modo flessibile in caso di cambio struttura del progetto.
 
 ### Vantaggi ✅
 
@@ -318,9 +366,7 @@ Ho scelto la combinazione di Strategy e Factory Method perché:
 
 ### Svantaggi ❌
 
-- Maggiore complessità iniziale
-- Più classi da gestire
-- Overhead di performance minimo
+- Maggiore complessità iniziale avendo più classi da gestire
 
 ## 💻 Implementazione
 
@@ -371,56 +417,64 @@ Il flusso delle operazioni è:
 2. Il context utilizza la strategia selezionata
 3. Le operazioni vengono eseguite attraverso l'interfaccia comune
 
-# 📋 Preventivatore v2 - Documentation
+# 📋 Preventivatore v2
 
-## 🎯 Pattern Scelto: Strategy
+## 🎯 Pattern Scelto: Facade
 
-Il pattern Strategy è stato scelto per le seguenti ragioni:
+## 🧾 Analisi del Problema
 
-- Permette di definire una famiglia di algoritmi di calcolo preventivi
-- Rende gli algoritmi intercambiabili
-- Isola la logica di calcolo dal resto dell'applicazione
-- Facilita l'aggiunta di nuove strategie di calcolo
+Vi viene chiesto di andare ad aggiornare un unico file excel su Google Drive ogni volta che un ordine viene aggiunto, modificato o eliminato. Ad ogni ordine corrisponde una riga.
+La libreria che vi permette di scrivere su Drive lavora a basso livello, per ogni dato che dovete andare a scrivere vi serve il link del file (sempre lo stesso), il nome del foglio (sempre lo stesso), le coordinate su cui lavorare, e infine i dati da scrivere.
+Ogni ordine ha il suo codice univoco, e deve rimanere all'oscuro del fatto che lo state esportando su Drive.
+Possiamo riassumere i passaggi delle 3 operazioni da svolgere:
+
+- Aggiunta ordine
+- Modifica ordine
+- eliminare la riga
+
+### 🧠 Ragionamento
+
+Ho scelto il Facade pattern per questi motivi:
+
+- Use the Facade pattern when you need to have a limited but straightforward interface to a complex subsystem. ➡️ Questo è il caso d'uso tipico del Facade pattern e il problema che vogliamo risolvere rispecchia questa descrizione.
+- Fornisce un'interfaccia semplificata per il sistema complesso di calcolo preventivi
+- Nasconde la complessità del sistema sottostante
+- Riduce le dipendenze tra il client e i sottosistemi
+- Facilita l'utilizzo del sistema di preventivazione
 
 ### ✅ Vantaggi
 
-- Flessibilità nel cambiare l'algoritmo di calcolo a runtime
-- Separazione delle responsabilità
-- Facile aggiunta di nuove strategie
-- Eliminazione di condizioni multiple switch/if
+- Semplifica l'interfaccia per il client
+- Disaccoppia il sottosistema dai client
+- Fornisce un punto di accesso unificato
+- Migliora la manutenibilità del codice
 
 ### ❌ Svantaggi
 
-- Aumenta il numero di oggetti nel sistema
-- Il client deve conoscere le differenze tra le strategie
-- Overhead di comunicazione tra Strategy e Context
+- Può introdurre un livello di indirezione non necessario se non gestito correttamente
 
 ## 💻 Implementazione
 
 ```python
-from abc import ABC, abstractmethod
+# Sottosistemi
+class CalcolatoreIVA:
+    def calcola_iva(self, importo: float) -> float:
+        return importo * 0.22
 
-# Strategy Interface
-class StrategiaPreventivo(ABC):
-    @abstractmethod
+class CalcolatoreBase:
+    def calcola_base(self, dati: dict) -> float:
+        return dati.get('importo_base', 0)
+
+# Facade
+class PreventivatoreFacade:
+    def __init__(self):
+        self._calcolatore_iva = CalcolatoreIVA()
+        self._calcolatore_base = CalcolatoreBase()
+
     def calcola_preventivo(self, dati: dict) -> float:
-        pass
-
-# Esempio di Concrete Strategy
-class PreventivoBase(StrategiaPreventivo):
-    def calcola_preventivo(self, dati: dict) -> float:
-        return dati.get('importo_base', 0) * 1.22  # IVA 22%
-
-# Context
-class Preventivatore:
-    def __init__(self, strategia: StrategiaPreventivo):
-        self._strategia = strategia
+        importo_base = self._calcolatore_base.calcola_base(dati)
+        iva = self._calcolatore_iva.calcola_iva(importo_base)
+        return importo_base + iva
 ```
 
-## 🖥️ Output
-
-```
-Preventivo Base: 1220.0
-```
-
-Il codice implementa un sistema flessibile per il calcolo dei preventivi con diverse strategie. L'esempio mostra solo la strategia base che calcola il prezzo con IVA, ma il sistema è progettato per supportare facilmente l'aggiunta di nuove strategie di calcolo.
+Il codice implementa un sistema di preventivazione che utilizza il pattern Facade per nascondere la complessità del calcolo dei preventivi. La facade fornisce un'interfaccia semplice per il client, mentre gestisce internamente l'interazione con i vari sottosistemi di calcolo.

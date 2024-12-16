@@ -1,4 +1,6 @@
-# 🖼️ Ottimizzazione Thumbnail con Proxy
+# 🖼️ Ottimizzazione Thumbnail
+
+## 🎯 Pattern Scelto: Proxy
 
 ## 📝 Descrizione del Problema
 
@@ -11,7 +13,7 @@ Il sistema deve gestire le immagini profilo degli utenti con le seguenti necessi
 
 ## 🔧 Pattern utilizzato: Proxy
 
-### 🎯 Perché il Pattern Proxy?
+### 🧠 Ragionamento
 
 Il Pattern Proxy è la scelta ideale per questo scenario per diversi motivi:
 
@@ -33,29 +35,7 @@ Il Pattern Proxy è la scelta ideale per questo scenario per diversi motivi:
 - Riduce il numero di accessi allo storage
 - Migliora le performance del sistema
 
-### Componenti Principali:
-
-1. 🎨 **IImageService** (Interface)
-
-   - Definisce il contratto base per tutti i servizi
-
-2. 💾 **RealImageService**
-
-   - Gestisce l'accesso diretto allo storage
-   - Recupera le immagini originali
-
-3. 📦 **CacheImageProxy**
-
-   - Implementa la cache temporanea
-   - Gestisce la scadenza delle immagini
-   - Pulisce automaticamente la cache
-
-4. 🖼️ **ThumbnailProxy**
-   - Gestisce la creazione delle thumbnail
-   - Memorizza le versioni ridotte
-   - Ottimizza il trasferimento
-
-## 💡 Vantaggi della Soluzione
+## ✅ Vantaggi
 
 1. **Separazione delle Responsabilità**
 
@@ -71,6 +51,10 @@ Il Pattern Proxy è la scelta ideale per questo scenario per diversi motivi:
 3. **Flessibilità**
    - Facile aggiungere nuove funzionalità
    - Semplice modifica dei comportamenti esistenti
+
+## ❌ Svantaggi
+
+- Maggiore complessità iniziale
 
 ## 🚀 Esempio di Utilizzo
 
