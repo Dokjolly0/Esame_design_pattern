@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "solution_all.md",
+                "file": "solution_typeorm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "solution_all"
+              "title": "solution_typeorm"
             }
           }
         ]
@@ -164,15 +164,15 @@
   },
   "active": "b470d61cd034f0de",
   "lastOpenFiles": [
+    "solution_preventivatoreV2.md",
+    "solution_preventivatore.md",
+    "solution_ottimizzazione_thumbnail.md",
+    "solution_azienda_e_ruoli.md",
+    "solution_aspirapolvere_e_accessori.md",
+    "solution_all.md",
     "README.md",
     "readme.md",
-    "solution_aspirapolvere_e_accessori.md",
-    "solution_azienda_e_ruoli.md",
-    "solution_ottimizzazione_thumbnail.md",
-    "solution_preventivatore.md",
-    "solution_preventivatoreV2.md",
     "solution_typeorm.md",
-    "solution_all.md",
     "solution.md"
   ]
 }
